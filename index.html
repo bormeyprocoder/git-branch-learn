@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ANIME MART — Premium Anime Merchandise Store</title>
+<meta name="description" content="Shop premium anime merchandise: t-shirts, hoodies, figures, posters, phone cases, mugs, bags and accessories from your favorite series." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0f; --surface:#131319; --surface-2:#1b1b23; --text:#f5f5f7; --muted:#a1a1ad;
+  --border:rgba(255,255,255,.10); --accent:#e11d48; --accent-2:#a855f7; --neon:#22d3ee;
+  --shadow:0 20px 45px -20px rgba(0,0,0,.85); --radius:18px;
+  --glass:rgba(255,255,255,.06);
+}
+html[data-theme="light"]{
+  --bg:#f6f6f8; --surface:#ffffff; --surface-2:#f0f0f4; --text:#101014; --muted:#5b5b68;
+  --border:rgba(0,0,0,.10); --shadow:0 18px 40px -22px rgba(0,0,0,.35); --glass:rgba(255,255,255,.65);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;line-height:1.6;overflow-x:hidden;transition:background .3s,color .3s}
+img{max-width:100%;display:block}
+h1,h2,h3,.logo,.badge,.btn{font-family:'Bebas Neue',Manrope,sans-serif;letter-spacing:.04em}
+h2{font-size:clamp(1.9rem,4vw,3rem);line-height:1.05}
+.wrap{width:min(1200px,92%);margin-inline:auto}
+section{padding:72px 0}
+.eyebrow{color:var(--accent);font-weight:800;font-size:.78rem;letter-spacing:.28em;text-transform:uppercase}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font-size:1rem;padding:12px 22px;border-radius:999px;
+  background:linear-gradient(120deg,var(--accent),var(--accent-2));color:#fff;transition:transform .25s,box-shadow .25s,filter .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px -12px var(--accent);filter:brightness(1.08)}
+.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
+.btn.ghost:hover{border-color:var(--neon);box-shadow:0 0 22px -6px var(--neon)}
+.btn.sm{padding:9px 16px;font-size:.9rem}
+
+/* NAV */
+header{position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--border);transition:padding .25s}
+header.shrunk{box-shadow:var(--shadow)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}
+.logo{font-size:1.7rem;display:flex;align-items:center;gap:8px}
+.logo span{background:linear-gradient(120deg,var(--accent),var(--accent-2),var(--neon));-webkit-background-clip:text;background-clip:text;color:transparent}
+.menu{display:flex;gap:22px;list-style:none}
+.menu a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.94rem;position:relative;transition:color .2s}
+.menu a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .3s}
+.menu a:hover{color:var(--text)}
+.menu a:hover::after{transform:scaleX(1);transform-origin:left}
+.icons{display:flex;align-items:center;gap:10px}
+.icon-btn{position:relative;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--border);background:var(--glass);color:var(--text);cursor:pointer;font-size:1.05rem;transition:.25s}
+.icon-btn:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 0 18px -6px var(--accent)}
+.count{position:absolute;top:-5px;right:-5px;min-width:20px;height:20px;border-radius:999px;background:var(--accent);color:#fff;font-size:.7rem;display:grid;place-items:center;font-weight:800;padding:0 5px}
+.burger{display:none}
+.searchbar{display:none;padding:0 0 14px}
+.searchbar.open{display:block}
+input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-family:inherit;font-size:.95rem}
+input:focus,select,textarea:focus{outline:2px solid color-mix(in srgb,var(--accent) 60%,transparent)}
+
+/* HERO */
+.hero{position:relative;min-height:88vh;display:grid;place-items:center;text-align:center;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.05);animation:zoom 18s ease-in-out infinite alternate}
+@keyframes zoom{to{transform:scale(1.15)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,10,.55),rgba(5,5,10,.92))}
+html[data-theme="light"] .hero::after{background:linear-gradient(180deg,rgba(10,10,20,.35),rgba(10,10,20,.8))}
+.hero-inner{position:relative;z-index:2;padding:80px 0;color:#fff}
+.hero h1{font-size:clamp(2.8rem,9vw,6.5rem);line-height:.95}
+.hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--accent),var(--accent-2),var(--neon));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:560px;margin:16px auto 28px;color:#d6d6e2}
+.hero .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.marquee{border-block:1px solid var(--border);background:var(--surface);overflow:hidden;white-space:nowrap}
+.marquee div{display:inline-block;padding:12px 0;animation:slide 22s linear infinite;font-weight:700;color:var(--muted);letter-spacing:.18em;font-size:.8rem;text-transform:uppercase}
+.marquee span{padding:0 26px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* CATEGORIES */
+.cat-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.cat{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);cursor:pointer;background:var(--surface)}
+.cat img{aspect-ratio:1;object-fit:cover;transition:transform .5s}
+.cat:hover img{transform:scale(1.1) rotate(-1deg)}
+.cat b{position:absolute;left:0;right:0;bottom:0;padding:14px;background:linear-gradient(transparent,rgba(0,0,0,.85));color:#fff;font-weight:800}
+
+/* PRODUCTS */
+.toolbar{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));background:var(--surface);border:1px solid var(--border);padding:16px;border-radius:var(--radius);margin-bottom:26px}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s;animation:fade .5s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent) 55%,transparent)}
+.thumb{position:relative;background:var(--surface-2);cursor:pointer}
+.thumb img{aspect-ratio:1;object-fit:cover;transition:transform .5s}
+.card:hover .thumb img{transform:scale(1.07)}
+.badge{position:absolute;top:12px;left:12px;padding:5px 11px;border-radius:999px;font-size:.82rem;background:var(--accent);color:#fff}
+.badge.new{background:var(--neon);color:#04121a}
+.wish{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(8px);cursor:pointer;font-size:1rem;transition:.25s;color:var(--text)}
+.wish:hover{transform:scale(1.12)}
+.wish.on{background:var(--accent);color:#fff;border-color:transparent}
+.info{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.series{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2);font-weight:800}
+.name{font-weight:700;font-size:1rem}
+.rate{color:#f5b301;font-size:.85rem}
+.price{display:flex;align-items:baseline;gap:8px;margin-top:auto}
+.price b{font-size:1.25rem}
+.price s{color:var(--muted);font-size:.9rem}
+.info .btn{width:100%;justify-content:center;margin-top:10px}
+.empty{text-align:center;color:var(--muted);padding:50px 0}
+
+/* PROMO */
+.promo{border-radius:26px;padding:clamp(28px,5vw,60px);text-align:center;background:
+  radial-gradient(circle at 20% 20%,color-mix(in srgb,var(--accent) 45%,transparent),transparent 60%),
+  radial-gradient(circle at 80% 70%,color-mix(in srgb,var(--accent-2) 45%,transparent),transparent 60%),var(--surface);
+  border:1px solid var(--border);overflow:hidden;position:relative}
+.promo h2{font-size:clamp(2rem,6vw,4rem)}
+.promo p{color:var(--muted);margin:10px 0 22px}
+
+/* ABOUT */
+.about{display:grid;gap:34px;grid-template-columns:1.1fr 1fr;align-items:center}
+.about img{border-radius:var(--radius);border:1px solid var(--border)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center}
+.stat b{display:block;font-size:1.5rem;font-family:'Bebas Neue',sans-serif;color:var(--accent)}
+.stat span{font-size:.8rem;color:var(--muted)}
+
+/* CONTACT */
+.contact{display:grid;gap:26px;grid-template-columns:1.2fr .8fr}
+form{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;display:grid;gap:14px}
+.row{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;display:grid;gap:14px;align-content:start}
+.socials{display:flex;gap:10px}
+footer{border-top:1px solid var(--border);background:var(--surface);padding:52px 0 22px;margin-top:20px}
+.fgrid{display:grid;gap:26px;grid-template-columns:1.4fr repeat(3,1fr)}
+.fgrid a{display:block;color:var(--muted);text-decoration:none;padding:3px 0;transition:.2s}
+.fgrid a:hover{color:var(--accent);transform:translateX(4px)}
+.fgrid h4{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px}
+.copy{border-top:1px solid var(--border);margin-top:30px;padding-top:18px;text-align:center;color:var(--muted);font-size:.85rem}
+
+/* DRAWER + MODALS */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:.3s;z-index:80}
+.overlay.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:var(--surface);border-left:1px solid var(--border);z-index:90;display:flex;flex-direction:column;transform:translateX(105%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.drawer.on{transform:none}
+.drawer header{position:static;display:flex;justify-content:space-between;align-items:center;padding:18px;border-bottom:1px solid var(--border);background:transparent;backdrop-filter:none}
+.items{flex:1;overflow:auto;padding:16px;display:grid;gap:12px;align-content:start}
+.ci{display:grid;grid-template-columns:70px 1fr auto;gap:12px;align-items:center;background:var(--surface-2);border-radius:14px;padding:10px}
+.ci img{width:70px;height:70px;object-fit:cover;border-radius:10px}
+.qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+.qty button{width:26px;height:26px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text);cursor:pointer}
+.qty button:hover{background:var(--accent);color:#fff}
+.summary{border-top:1px solid var(--border);padding:18px;display:grid;gap:10px}
+.line{display:flex;justify-content:space-between;color:var(--muted)}
+.line.total{color:var(--text);font-weight:800;font-size:1.15rem}
+.modal{position:fixed;z-index:95;top:50%;left:50%;transform:translate(-50%,-46%) scale(.95);opacity:0;pointer-events:none;width:min(760px,92%);max-height:88vh;overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:22px;transition:.3s}
+.modal.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px}
+.modal img{border-radius:16px}
+.close{position:absolute;top:12px;right:12px;z-index:2}
+#toasts{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:120;display:grid;gap:10px;width:max-content;max-width:92%}
+.toast{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);padding:12px 18px;border-radius:12px;box-shadow:var(--shadow);animation:pop .3s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}}
+
+@media(max-width:900px){
+  .about,.contact,.modal-grid{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+  .burger{display:grid}
+  .menu{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--surface);border-bottom:1px solid var(--border);padding:0 5%;max-height:0;overflow:hidden;transition:max-height .35s}
+  .menu.open{max-height:420px;padding:10px 5% 20px}
+  .menu li{padding:10px 0;border-bottom:1px solid var(--border)}
+  .row{grid-template-columns:1fr}
+  section{padding:54px 0}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap">
+    <nav class="nav">
+      <div class="logo">ANIME <span>MART</span></div>
+      <ul class="menu" id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#new">New Arrivals</a></li>
+        <li><a href="#promo">Promotions</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="icons">
+        <button class="icon-btn" id="searchToggle" aria-label="Search">🔍</button>
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">🌙</button>
+        <button class="icon-btn" id="accountBtn" aria-label="Account">👤</button>
+        <button class="icon-btn" id="cartBtn" aria-label="Cart">🛒<span class="count" id="cartCount">0</span></button>
+        <button class="icon-btn burger" id="burger" aria-label="Menu">☰</button>
+      </div>
+    </nav>
+    <div class="searchbar" id="searchbar"><input id="navSearch" type="search" placeholder="Search anime merchandise…" /></div>
+  </div>
+</header>
+
+<section class="hero" id="home" style="padding:0">
+  <img class="bg" src="/images/hero.jpg" alt="Anime merchandise store display with t-shirts, figures and posters" />
+  <div class="hero-inner wrap">
+    <p class="eyebrow">Premium anime merchandise</p>
+    <h1>YOUR ANIME.<br><em>YOUR STYLE.</em></h1>
+    <p>Discover premium anime merchandise made for true fans.</p>
+    <div class="btns">
+      <button class="btn" onclick="go('#shop')">Shop Now</button>
+      <button class="btn ghost" onclick="go('#categories')">Explore Collection</button>
+    </div>
+  </div>
+</section>
+
+<div class="marquee"><div id="mq"></div></div>
+
+<section id="categories" class="wrap">
+  <div class="sec-head">
+    <div><p class="eyebrow">Browse</p><h2>Shop by category</h2></div>
+    <button class="btn ghost sm" onclick="setCat('all')">Show all products</button>
+  </div>
+  <div class="cat-grid" id="catGrid"></div>
+</section>
+
+<section id="shop" class="wrap">
+  <div class="sec-head">
+    <div><p class="eyebrow">Merch shop</p><h2>All merchandise</h2></div>
+    <span id="resultCount" style="color:var(--muted)"></span>
+  </div>
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Search products…" />
+    <select id="catFilter"></select>
+    <select id="animeFilter"></select>
+    <select id="sort">
+      <option value="default">Sort: Featured</option>
+      <option value="low">Price: Low to High</option>
+      <option value="high">Price: High to Low</option>
+      <option value="rating">Rating: Best first</option>
+    </select>
+    <button class="btn ghost" onclick="resetFilters()">Reset filters</button>
+  </div>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty" hidden>No merchandise matched your search.</p>
+</section>
+
+<section class="wrap" id="promo">
+  <div class="promo">
+    <p class="eyebrow">Limited time</p>
+    <h2>ANIME FAN SALE — UP TO 30% OFF</h2>
+    <p>Limited-time deals on selected merchandise.</p>
+    <button class="btn" onclick="showSale()">Shop Sale</button>
+  </div>
+</section>
+
+<section class="wrap" id="new">
+  <div class="sec-head"><div><p class="eyebrow">Fresh drops</p><h2>New arrivals</h2></div></div>
+  <div class="grid" id="newGrid"></div>
+</section>
+
+<section class="wrap" id="about">
+  <div class="about">
+    <div>
+      <p class="eyebrow">About us</p>
+      <h2>Made for Anime Fans</h2>
+      <p style="color:var(--muted);margin-top:12px">Anime Mart brings together stylish, high-quality anime merchandise for fans who want to show their favorite series everywhere they go.</p>
+      <div class="stats">
+        <div class="stat"><b>120K+</b><span>Fans served</span></div>
+        <div class="stat"><b>800+</b><span>Merch designs</span></div>
+        <div class="stat"><b>4.9★</b><span>Average rating</span></div>
+      </div>
+    </div>
+    <img src="/images/accessories.jpg" alt="Anime keychains and embroidered cap merchandise" loading="lazy" />
+  </div>
+</section>
+
+<section class="wrap" id="contact">
+  <div class="sec-head"><div><p class="eyebrow">Support</p><h2>Contact us</h2></div></div>
+  <div class="contact">
+    <form id="contactForm">
+      <div class="row">
+        <input required name="name" placeholder="Full Name" />
+        <input required type="email" name="email" placeholder="Email" />
+      </div>
+      <input required name="subject" placeholder="Subject" />
+      <textarea required name="message" rows="5" placeholder="Message"></textarea>
+      <button class="btn" type="submit">Send Message</button>
+    </form>
+    <div class="info-card">
+      <div><b>Email</b><p style="color:var(--muted)">support@animemart.com</p></div>
+      <div><b>Phone</b><p style="color:var(--muted)">+1 (555) 210-8899</p></div>
+      <div><b>Follow us</b>
+        <div class="socials" style="margin-top:8px">
+          <button class="icon-btn" aria-label="Instagram">📸</button>
+          <button class="icon-btn" aria-label="X">✖</button>
+          <button class="icon-btn" aria-label="YouTube">▶</button>
+          <button class="icon-btn" aria-label="Discord">💬</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="logo">ANIME <span>MART</span></div>
+        <p style="color:var(--muted);margin-top:8px;max-width:280px">Your favorite anime merchandise in one place.</p>
+        <div class="socials" style="margin-top:14px">
+          <button class="icon-btn" aria-label="Instagram">📸</button>
+          <button class="icon-btn" aria-label="X">✖</button>
+          <button class="icon-btn" aria-label="YouTube">▶</button>
+        </div>
+      </div>
+      <div><h4>Store</h4><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#new">New Arrivals</a></div>
+      <div><h4>Company</h4><a href="#about">About</a><a href="#contact">Contact</a><a href="#promo">Promotions</a></div>
+      <div><h4>Legal</h4><a href="#" onclick="toast('Privacy Policy coming soon')">Privacy Policy</a><a href="#" onclick="toast('Terms coming soon')">Terms &amp; Conditions</a></div>
+    </div>
+    <div class="copy">© <span id="yr"></span> Anime Mart. All rights reserved.</div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+
+<aside class="drawer" id="cart">
+  <header><b style="font-size:1.1rem">Your Cart</b><button class="icon-btn" onclick="closeAll()">✕</button></header>
+  <div class="items" id="cartItems"></div>
+  <div class="summary">
+    <div class="line"><span>Subtotal</span><span id="sub">$0.00</span></div>
+    <div class="line"><span>Shipping</span><span id="ship">$0.00</span></div>
+    <div class="line total"><span>Total</span><span id="tot">$0.00</span></div>
+    <button class="btn" onclick="checkout()">Checkout</button>
+    <button class="btn ghost" onclick="clearCart()">Clear cart</button>
+  </div>
+</aside>
+
+<div class="modal" id="modal"><button class="icon-btn close" onclick="closeAll()">✕</button><div id="modalBody"></div></div>
+<div id="toasts"></div>
+
+<script>
+/* ---------------- DATA ---------------- */
+const PRODUCTS=[
+ {id:1,name:"One Piece Luffy Graphic T-Shirt",series:"One Piece",cat:"T-Shirts",price:19.99,old:26.99,rating:4.8,img:"https://i.pinimg.com/1200x/d5/63/31/d563318fcfedba9c5d6f07547371c17c.jpg",sale:true,isNew:false,desc:"Heavyweight 100% cotton tee with a bold screen-printed Straw Hat crew design. Pre-shrunk and unisex fit."},
+ {id:2,name:"Naruto Akatsuki Hoodie",series:"Naruto",cat:"Hoodies",price:39.99,old:52.99,rating:4.9,img:"https://i.pinimg.com/736x/85/d8/28/85d828471ba15422a471350c7bf226f4.jpg",sale:true,isNew:false,desc:"Brushed fleece pullover hoodie with all-over red cloud print, kangaroo pocket and ribbed cuffs."},
+ {id:3,name:"Demon Slayer Tanjiro Figure",series:"Demon Slayer",cat:"Figures",price:49.99,old:null,rating:5.0,img:"https://i.pinimg.com/1200x/27/11/61/271161ee74bab144c2bc85782614ba2b.jpg",sale:false,isNew:true,desc:"1/8 scale hand-painted PVC statue on a display base. Collector packaging included."},
+ {id:4,name:"Jujutsu Kaisen Gojo Phone Case",series:"Jujutsu Kaisen",cat:"Phone Cases",price:14.99,old:19.99,rating:4.6,img:"https://i.pinimg.com/736x/32/f4/d3/32f4d3280ab68be5166d599fc2fd2cca.jpg",sale:true,isNew:false,desc:"Shock-absorbing TPU case with a scratch-resistant printed back panel. Multiple models available."},
+ {id:5,name:"Dragon Ball Z Graphic Hoodie",series:"Dragon Ball",cat:"Hoodies",price:34.99,old:null,rating:4.7,img:"https://i.pinimg.com/1200x/cb/c6/78/cbc678ff47f029cab7bd73b587abc4aa.jpg",sale:false,isNew:false,desc:"Soft cotton-blend hoodie with a bold energy-burst graphic across the chest."},
+ {id:6,name:"Attack on Titan Wall Poster",series:"Attack on Titan",cat:"Posters",price:12.99,old:null,rating:4.5,img:"https://i.pinimg.com/736x/2e/d8/45/2ed845771ef60a16f851e211aba5792d.jpg",sale:false,isNew:false,desc:"Matte 300gsm poster print, 24x36 inches, shipped rolled in a protective tube."},
+ {id:7,name:"Pokémon Anime Ceramic Mug",series:"Pokémon",cat:"Mugs",price:15.99,old:21.99,rating:4.4,img:"https://i.pinimg.com/736x/2b/2a/2a/2b2a2a8e90470aabf2e23c224e7c03fd.jpg",sale:true,isNew:false,desc:"11oz glazed ceramic mug with a fade-resistant wrap print. Dishwasher safe."},
+ {id:8,name:"My Hero Academia Backpack",series:"My Hero Academia",cat:"Bags",price:29.99,old:null,rating:4.8,img:"https://i.pinimg.com/1200x/20/0c/44/200c440d8f236c5294c148db8b250fe3.jpg",sale:false,isNew:true,desc:"Water-resistant 22L backpack with padded laptop sleeve and embroidered hero emblem."},
+ {id:9,name:"Anime Keychain & Cap Bundle",series:"Multi Series",cat:"Accessories",price:17.99,old:24.99,rating:4.6,img:"https://i.pinimg.com/736x/dc/81/f4/dc81f4f653836322f2987c34a55ef867.jpg",sale:true,isNew:true,desc:"Six enamel character keychains plus an embroidered snapback cap in one fan bundle."},
+ {id:10,name:"Demon Slayer Graphic T-Shirt",series:"Demon Slayer",cat:"T-Shirts",price:21.99,old:null,rating:4.7,img:"https://i.pinimg.com/1200x/98/97/08/9897083334245c9282882808613726f6.jpg",sale:false,isNew:true,desc:"Soft-hand print tee with a slayer corps inspired design on midweight cotton."},
+ {id:11,name:"Jujutsu Kaisen Collector Figure",series:"Jujutsu Kaisen",cat:"Figures",price:59.99,old:74.99,rating:4.9,img:"https://i.pinimg.com/736x/17/43/5a/17435a387a06b5e1071528c3e1672950.jpg",sale:true,isNew:false,desc:"Premium articulated collector statue with interchangeable hands and effect parts."},
+ {id:12,name:"One Piece Anime Mug",series:"One Piece",cat:"Mugs",price:13.99,old:null,rating:4.3,img:"https://i.pinimg.com/736x/f5/24/ce/f524ce0c89340a83511334a81d08d5b8.jpg",sale:false,isNew:false,desc:"Glossy 11oz mug printed with a crew emblem. Perfect for daily anime marathons."}
+];
+const CATEGORIES=[
+ {name:"T-Shirts",img:"https://i.pinimg.com/1200x/12/83/23/128323d3c9909cb539ef5dfa745f1e9f.jpg"},{name:"Hoodies",img:"https://i.pinimg.com/736x/75/d8/06/75d8063ca668303b0bc51b974a5c631a.jpg"},
+ {name:"Figures",img:"https://i.pinimg.com/1200x/95/4f/c3/954fc332ed69fe400b9dbd392740abe6.jpg"},{name:"Accessories",img:"https://i.pinimg.com/736x/0f/0f/b9/0f0fb99be212ba5ae79b2268212e9fce.jpg"},
+ {name:"Posters",img:"https://i.pinimg.com/1200x/be/e3/5b/bee35bc2544c1d00e948c69d77c44428.jpg"},{name:"Phone Cases",img:"https://i.pinimg.com/736x/d3/7e/60/d37e609f62bfd070daf7f30f1d8003c2.jpg"},
+ {name:"Mugs",img:"https://i.pinimg.com/736x/87/55/71/8755710199014e7a0228f18100532478.jpg"},{name:"Bags",img:"https://i.pinimg.com/736x/91/de/cc/91deccfc532a33cff72b3c0b82e64dac.jpg"}
+];
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+let cart=JSON.parse(localStorage.getItem("am_cart")||"[]");
+let wish=JSON.parse(localStorage.getItem("am_wish")||"[]");
+let state={q:"",cat:"all",anime:"all",sort:"default",saleOnly:false};
+
+/* ---------------- UI HELPERS ---------------- */
+function toast(msg){const t=document.createElement("div");t.className="toast";t.textContent=msg;$("#toasts").append(t);setTimeout(()=>t.remove(),2600);}
+function money(n){return "$"+n.toFixed(2);}
+function stars(r){return "★".repeat(Math.round(r))+"☆".repeat(5-Math.round(r))+" "+r.toFixed(1);}
+function go(sel){document.querySelector(sel).scrollIntoView({behavior:"smooth"});$("#menu").classList.remove("open");}
+
+/* ---------------- RENDER ---------------- */
+function cardHTML(p){
+  const liked=wish.includes(p.id)?"on":"";
+  return `<article class="card">
+    <div class="thumb" onclick="openProduct(${p.id})">
+      ${p.sale?'<span class="badge">SALE</span>':p.isNew?'<span class="badge new">NEW</span>':''}
+      <img src="${p.img}" alt="${p.name}" loading="lazy" />
+      <button class="wish ${liked}" onclick="event.stopPropagation();toggleWish(${p.id})" aria-label="Wishlist">♥</button>
+    </div>
+    <div class="info">
+      <span class="series">${p.series}</span>
+      <span class="name">${p.name}</span>
+      <span class="rate">${stars(p.rating)}</span>
+      <span class="price"><b>${money(p.price)}</b>${p.old?`<s>${money(p.old)}</s>`:""}</span>
+      <button class="btn sm" onclick="addToCart(${p.id})">Add to Cart</button>
+    </div></article>`;
+}
+function render(){
+  let list=PRODUCTS.filter(p=>
+    (state.cat==="all"||p.cat===state.cat)&&
+    (state.anime==="all"||p.series===state.anime)&&
+    (!state.saleOnly||p.sale)&&
+    (p.name+p.series+p.cat).toLowerCase().includes(state.q.toLowerCase()));
+  if(state.sort==="low")list.sort((a,b)=>a.price-b.price);
+  if(state.sort==="high")list.sort((a,b)=>b.price-a.price);
+  if(state.sort==="rating")list.sort((a,b)=>b.rating-a.rating);
+  $("#grid").innerHTML=list.map(cardHTML).join("");
+  $("#empty").hidden=list.length>0;
+  $("#resultCount").textContent=list.length+" product"+(list.length===1?"":"s");
+  $("#newGrid").innerHTML=PRODUCTS.filter(p=>p.isNew).map(cardHTML).join("");
+}
+function renderCats(){
+  $("#catGrid").innerHTML=CATEGORIES.map(c=>`<div class="cat" onclick="setCat('${c.name}')">
+    <img src="${c.img}" alt="${c.name} anime merchandise" loading="lazy" /><b>${c.name}</b></div>`).join("");
+  $("#catFilter").innerHTML=`<option value="all">All categories</option>`+CATEGORIES.map(c=>`<option>${c.name}</option>`).join("");
+  $("#animeFilter").innerHTML=`<option value="all">All anime</option>`+[...new Set(PRODUCTS.map(p=>p.series))].map(s=>`<option>${s}</option>`).join("");
+  const ticker=["FREE SHIPPING OVER $60","OFFICIAL-STYLE ANIME MERCH","30-DAY RETURNS","NEW DROPS EVERY WEEK"];
+  $("#mq").innerHTML=[...ticker,...ticker].map(t=>`<span>${t}</span>`).join("");
+}
+function setCat(c){state.cat=c;state.saleOnly=false;$("#catFilter").value=c;render();go("#shop");}
+function showSale(){state.saleOnly=true;state.cat="all";$("#catFilter").value="all";render();go("#shop");toast("Showing sale items");}
+function resetFilters(){state={q:"",cat:"all",anime:"all",sort:"default",saleOnly:false};
+  $("#search").value="";$("#navSearch").value="";$("#catFilter").value="all";$("#animeFilter").value="all";$("#sort").value="default";render();}
+
+/* ---------------- CART ---------------- */
+function save(){localStorage.setItem("am_cart",JSON.stringify(cart));localStorage.setItem("am_wish",JSON.stringify(wish));}
+function addToCart(id){const it=cart.find(c=>c.id===id);it?it.qty++:cart.push({id,qty:1});save();renderCart();toast("Added to cart");}
+function changeQty(id,d){const it=cart.find(c=>c.id===id);if(!it)return;it.qty+=d;if(it.qty<1)cart=cart.filter(c=>c.id!==id);save();renderCart();}
+function removeItem(id){cart=cart.filter(c=>c.id!==id);save();renderCart();toast("Removed from cart");}
+function clearCart(){cart=[];save();renderCart();toast("Cart cleared");}
+function renderCart(){
+  const count=cart.reduce((s,c)=>s+c.qty,0);
+  $("#cartCount").textContent=count;
+  if(!cart.length){$("#cartItems").innerHTML=`<p class="empty">Your cart is empty.</p>`;}
+  else $("#cartItems").innerHTML=cart.map(c=>{const p=PRODUCTS.find(x=>x.id===c.id);
+    return `<div class="ci"><img src="${p.img}" alt="${p.name}" />
+      <div><b style="font-size:.92rem">${p.name}</b><div style="color:var(--muted);font-size:.85rem">${money(p.price)}</div>
+      <div class="qty"><button onclick="changeQty(${p.id},-1)">−</button><span>${c.qty}</span><button onclick="changeQty(${p.id},1)">+</button></div></div>
+      <div style="text-align:right"><b>${money(p.price*c.qty)}</b><br><button class="btn ghost sm" style="margin-top:6px;padding:4px 10px" onclick="removeItem(${p.id})">✕</button></div></div>`;}).join("");
+  const sub=cart.reduce((s,c)=>s+PRODUCTS.find(x=>x.id===c.id).price*c.qty,0);
+  const ship=sub>0&&sub<60?5.99:0;
+  $("#sub").textContent=money(sub);$("#ship").textContent=ship?money(ship):"Free";$("#tot").textContent=money(sub+ship);
+  render();
+}
+function checkout(){
+  if(!cart.length)return toast("Your cart is empty");
+  const total=$("#tot").textContent;
+  $("#modalBody").innerHTML=`<div style="padding:34px;text-align:center">
+    <h2>Order confirmed</h2><p style="color:var(--muted);margin:10px 0 18px">Thanks for shopping at Anime Mart. Your merchandise total is <b>${total}</b> and a confirmation was sent to your email.</p>
+    <button class="btn" onclick="closeAll()">Continue shopping</button></div>`;
+  openModal();cart=[];save();renderCart();
+}
+function toggleWish(id){wish.includes(id)?wish=wish.filter(w=>w!==id):wish.push(id);save();render();toast(wish.includes(id)?"Added to wishlist":"Removed from wishlist");}
+
+/* ---------------- MODAL / DRAWER ---------------- */
+function openModal(){$("#modal").classList.add("on");$("#overlay").classList.add("on");}
+function openProduct(id){const p=PRODUCTS.find(x=>x.id===id);
+  $("#modalBody").innerHTML=`<div class="modal-grid"><img src="${p.img}" alt="${p.name}" />
+    <div><span class="series">${p.series}</span><h2 style="margin:6px 0">${p.name}</h2>
+    <p class="rate">${stars(p.rating)}</p>
+    <p style="color:var(--muted);margin:12px 0">${p.desc}</p>
+    <p class="price"><b style="font-size:1.6rem">${money(p.price)}</b>${p.old?`<s>${money(p.old)}</s>`:""}</p>
+    <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
+      <button class="btn" onclick="addToCart(${p.id})">Add to Cart</button>
+      <button class="btn ghost" onclick="toggleWish(${p.id})">♥ Wishlist</button></div></div></div>`;
+  openModal();}
+function closeAll(){$("#modal").classList.remove("on");$("#cart").classList.remove("on");$("#overlay").classList.remove("on");}
+
+/* ---------------- EVENTS ---------------- */
+$("#overlay").onclick=closeAll;
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeAll();});
+$("#cartBtn").onclick=()=>{$("#cart").classList.add("on");$("#overlay").classList.add("on");};
+$("#burger").onclick=()=>$("#menu").classList.toggle("open");
+$("#searchToggle").onclick=()=>{$("#searchbar").classList.toggle("open");$("#navSearch").focus();};
+$("#accountBtn").onclick=()=>toast("Account area coming soon");
+$("#navSearch").oninput=e=>{state.q=e.target.value;$("#search").value=e.target.value;render();};
+$("#search").oninput=e=>{state.q=e.target.value;render();};
+$("#catFilter").onchange=e=>{state.cat=e.target.value;render();};
+$("#animeFilter").onchange=e=>{state.anime=e.target.value;render();};
+$("#sort").onchange=e=>{state.sort=e.target.value;render();};
+$$('.menu a').forEach(a=>a.addEventListener("click",()=>$("#menu").classList.remove("open")));
+$("#contactForm").onsubmit=e=>{e.preventDefault();e.target.reset();toast("Message sent — we'll reply soon!");};
+window.addEventListener("scroll",()=>$("#hdr").classList.toggle("shrunk",scrollY>20));
+const themeBtn=$("#themeToggle");
+const savedTheme=localStorage.getItem("am_theme")||"dark";
+document.documentElement.dataset.theme=savedTheme;themeBtn.textContent=savedTheme==="dark"?"🌙":"☀️";
+themeBtn.onclick=()=>{const t=document.documentElement.dataset.theme==="dark"?"light":"dark";
+  document.documentElement.dataset.theme=t;localStorage.setItem("am_theme",t);themeBtn.textContent=t==="dark"?"🌙":"☀️";};
+$("#yr").textContent=new Date().getFullYear();
+renderCats();renderCart();
+</script>
+</body>
+</html>
